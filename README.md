@@ -1,4 +1,4 @@
-# Alex Morgan - UI/UX Designer Portfolio
+# Uday Choudhary - UI/UX Designer Portfolio
 
 A modern, responsive portfolio website built with React showcasing UI/UX design work and case studies.
 
