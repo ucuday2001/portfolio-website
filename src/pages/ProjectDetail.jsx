@@ -2,12 +2,14 @@ import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { projectsData } from '../assets/data/projects';
+import { marketingProjectsData } from '../assets/data/marketingProjects';
 import './ProjectDetail.css';
 
 const ProjectDetail = () => {
   const { projectId } = useParams();
   const navigate = useNavigate();
-  const project = projectsData.find(p => p.id === projectId);
+  const allProjects = [...projectsData, ...marketingProjectsData];
+  const project = allProjects.find(p => p.id === projectId);
 
   // Forces scroll to top when project page loads
   useEffect(() => {
@@ -20,6 +22,78 @@ const ProjectDetail = () => {
 
   if (!project) {
     return <div>Project not found</div>;
+  }
+
+  if (project.projectLayout === 'campaign-gallery') {
+    const galleryVariant = project.galleryVariant || 'phone-mockup';
+    const gridClassName = `showcase-grid campaign-showcase-grid ${galleryVariant}`;
+    const imageClassName = `showcase-image campaign-showcase-image ${galleryVariant}`;
+
+    return (
+      <div className="project-detail">
+        <button className="back-button" onClick={() => navigate('/')}>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          Back
+        </button>
+
+        <div className="project-hero project-hero-compact">
+          <div className="container">
+            <motion.p
+              className="campaign-subtitle"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              {project.subtitle}
+            </motion.p>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15 }}
+            >
+              {project.title}
+            </motion.h1>
+          </div>
+        </div>
+
+        <div className="visual-showcase campaign-gallery-page">
+          <div className="container">
+            {project.galleryTitle ? (
+              <h2 className="section-main-title">{project.galleryTitle}</h2>
+            ) : null}
+
+            {project.postImages && project.postImages.length > 0 ? (
+              <div className={gridClassName}>
+                {project.postImages.map((image, index) => (
+                  <motion.div
+                    key={index}
+                    className={imageClassName}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1, duration: 0.6 }}
+                  >
+                    <img src={image} alt={`${project.title} post ${index + 1}`} />
+                  </motion.div>
+                ))}
+              </div>
+            ) : (
+              <div className={gridClassName}>
+                {[1, 2, 3].map((item) => (
+                  <div key={item} className={imageClassName}>
+                    <div className="showcase-placeholder">
+                      {`Add WhatsJet post image ${item}`}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
   }
 
 
@@ -251,11 +325,11 @@ const ProjectDetail = () => {
           <h2 className="section-main-title">Visual Showcase</h2>
 
           {project.showcaseImages && project.showcaseImages.length > 0 ? (
-            <div className="showcase-grid">
+            <div className={`showcase-grid ${project.galleryVariant || ''}`.trim()}>
               {project.showcaseImages.map((image, index) => (
                 <motion.div
                   key={index}
-                  className="showcase-image"
+                  className={`showcase-image ${project.galleryVariant || ''}`.trim()}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}

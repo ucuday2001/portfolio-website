@@ -13,12 +13,14 @@ import project3 from '../../components/images/project-3.png';
 import project3Detail from '../../components/images/project-3-detail.png'; 
 import project3Showcase from '../../components/images/project-3-showcase.png'; 
 import project4Showcase from '../../components/images/project-4-showcase.png'; 
+import landingPageImage from '../../components/images/lpage.png';
 
 export const projectsData = [
   {
     id: 'Magic Matrimony',
     image: project,
     detailImage: projectDetail,
+    galleryVariant: 'full-image-gallery',
     showcaseImages: [ 
       projectShowcase,
       projectShowcase1,
@@ -40,6 +42,7 @@ export const projectsData = [
     id: 'Website Templates',
     image: project1,
     detailImage: project1Detail,
+    galleryVariant: 'template-gallery',
     showcaseImages: [ 
       project1Showcase,
       project1Showcase2
@@ -60,6 +63,7 @@ export const projectsData = [
     id: 'AI-PY Console',
     image: project2,
     detailImage: project2Detail,
+    galleryVariant: 'full-image-gallery',
     showcaseImages: [ 
       project3Showcase
     ],
@@ -85,6 +89,7 @@ export const projectsData = [
     id: 'GridMeta-Layout Builder',
     image: project3,
     detailImage: project3Detail,
+    galleryVariant: 'full-image-gallery',
     showcaseImages: [ 
       project4Showcase
     ],
@@ -99,5 +104,20 @@ export const projectsData = [
     overview: "A Layout Builder is an interactive platform that allows users to design and manage layouts for warehouses, factories, or large storage facilities through a structured visual interface. Users can create different sections, organize storage areas, and map operational spaces based on their requirements. The system integrates with SQL databases to display real-time data related to each layout section, such as stored inventory, capacity, and operational details.",
     challenge: "Designing the layout builder in Figma was challenging because it required creating a highly flexible and scalable design that could represent complex warehouse or factory structures while still being easy to use. Visualizing large spaces, multiple sections, and detailed storage areas without making the interface cluttered was difficult. Creating interactive layout components like grids, drag-and-drop sections, and clear spatial hierarchy needed careful planning.",
     solution: "To solve these challenges, we created a structured and scalable design system with reusable layout components, grids, and predefined section modules to simplify the creation of complex warehouse and factory structures. We designed an intuitive drag-and-drop interaction pattern and clear visual hierarchy to help users easily organize large spaces without confusion. Data visualization elements were standardized to clearly represent SQL-driven information like inventory and capacity for each section.",
+  },
+  {
+    id: 'Landing Pages',
+    image: landingPageImage,
+    category: 'Landing Pages Â· Websites',
+    title: 'Landing Pages',
+    description: 'High-conversion landing page designs built to highlight products, offers, and brand messaging with clarity.',
+    tags: ['Landing Page Design', 'Responsive Design', 'Conversion Focused'],
+    client: 'Various Brands',
+    duration: 'Ongoing',
+    role: 'Web Designer',
+    year: '2026',
+    overview: "A landing page design project focuses on building visually strong, conversion-oriented web pages that clearly communicate a product, service, or campaign. These pages are designed to guide visitors toward a focused action while keeping the layout polished, responsive, and easy to scan.",
+    challenge: "Creating effective landing pages required balancing strong visual appeal with clear messaging hierarchy and conversion flow. The challenge was to make every section feel engaging without distracting users from the main call to action, while still keeping the designs adaptable to different brands and offers.",
+    solution: "To solve this, we designed modular landing page sections with clear content flow, strong visual hierarchy, and flexible responsive layouts. This made it easier to create pages that feel brand-specific while still following proven structure for readability, trust, and conversion.",
   }
 ];
